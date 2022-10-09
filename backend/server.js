@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 const connectDB = require('./config/dbConnect')
 const authRouter = require('./routes/authentication')
@@ -10,6 +11,9 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 app.use(express.json())
+app.use(cors({
+    origin: "*"
+}))
 
 app.use("/users", authRouter)
 
